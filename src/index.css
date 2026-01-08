@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+  --color-turkish-red: #E30A17;
+  --color-deep-charcoal: #121212;
+  --color-glass-panel: rgba(255, 255, 255, 0.05);
+
+  /* Retain default tailwind colors? V4 usually includes them. */
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Menlo', monospace;
+
+  --animate-caret-blink: caret-blink 1s step-end infinite;
+
+  @keyframes caret-blink {
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-deep-charcoal text-gray-200 antialiased font-sans selection:bg-turkish-red selection:text-white overflow-hidden;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+}
