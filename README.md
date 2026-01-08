@@ -1,73 +1,99 @@
-# React + TypeScript + Vite
+⸻
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📘 f-klavye-hiz-testi
 
-Currently, two official plugins are available:
+f-klavye-hiz-testi, kullanıcıların F-klavye yazma hızını ölçmek ve geliştirmek için oluşturulmuş basit bir web uygulamasıdır.
+React + TypeScript + Vite kullanılarak hazırlanmıştır.  ￼
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+⸻
 
-## React Compiler
+🚀 Özellikler
+	•	✅ F-klavye yazma hızı testi
+	•	🎯 Yazma doğruluğu ölçümü
+	•	⚡ Hızlı ve modern arayüz
+	•	📱 Web tabanlı (tarayıcıda çalışır)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+⸻
 
-## Expanding the ESLint configuration
+📦 Teknolojiler
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Bu proje aşağıdaki teknolojileri kullanır:
+	•	React (UI için)
+	•	TypeScript
+	•	Vite (hızlı geliştirme sunucusu)
+	•	CSS / Tailwind veya başka styling (projeye göre)  ￼
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+⸻
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+🛠️ Kurulum
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Aşağıdaki adımları takip ederek projeyi yerel makinede çalıştırabilirsin:
+	1.	Reposu klonla:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+git clone https://github.com/aselamt/f-klavye-hiz-testi.git
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+	2.	Proje dizinine gir:
+
+cd f-klavye-hiz-testi
+
+
+	3.	Bağımlılıkları yükle:
+
+npm install
+# veya
+yarn
+
+
+	4.	Geliştirme sunucusunu başlat:
+
+npm run dev
+# veya
+yarn dev
+
+
+
+📌 Artık tarayıcında genellikle http://localhost:5173 adresinde uygulamayı görebilirsin.
+
+⸻
+
+▶️ Kullanım
+	•	Test başlatıldığında ekranda gösterilen metni yaz.
+	•	Süre sonunda dakikadaki kelime sayısı (WPM) ve doğruluk oranı gibi sonuçlar gösterilir.
+	•	Hataların gözlemlenmesi ve düzenli pratikle hızını artırabilirsin.
+
+⸻
+
+💡 Geliştirme Fikirleri
+
+Projenin ileride şunlar eklenebilir:
+	•	🎨 Tema seçeneği (light/dark)
+	•	📊 Sonuç takibi – skor hafızası
+	•	🧠 Zorluk seviyeleri
+	•	🌐 Çoklu dil desteği
+
+⸻
+
+🤝 Katkıda Bulunma
+
+Katkı için:
+	1.	Fork yap
+	2.	Yeni bir branch oluştur (feature/özellik-adı)
+	3.	Değişiklikleri commit et
+	4.	Pull Request aç
+
+Her türlü katkı, hata bildirimi veya fikir her zaman değerlidir!
+
+⸻
+
+📄 Lisans
+
+Bu proje MIT Lisansı ile lisanslanmıştır.  ￼
+
+⸻
+
+💬 İletişim
+
+Herhangi bir sorunda, öneride veya geri bildirimde bana ulaşabilirsin!
+
+⸻
