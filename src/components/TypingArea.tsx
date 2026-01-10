@@ -31,25 +31,18 @@ export function TypingArea({ currentText, userInput, className }: TypingAreaProp
         <div
             ref={containerRef}
             className={clsx(
-                "relative w-full max-w-4xl h-32 sm:h-40 md:h-64 overflow-hidden text-xl sm:text-2xl md:text-3xl font-mono leading-relaxed bg-black/40 p-10 md:p-14 border border-white/5 shadow-[inset_0_0_40px_rgba(0,0,0,0.5)]",
+                "relative w-full max-w-4xl h-32 sm:h-40 md:h-48 overflow-hidden text-xl sm:text-2xl md:text-3xl font-mono leading-relaxed bg-black/10 rounded-xl p-4 sm:p-6 md:p-8 border border-white/5 shadow-inner",
                 className
             )}
         >
-            <div className="absolute top-3 left-4 text-[9px] font-bold text-white/10 uppercase tracking-[0.3em] pointer-events-none flex items-center gap-4">
-                <span className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-rust-primary animate-flicker"></div> STREAM_001A</span>
-                <span className="opacity-5 via-white/5">0xFF09_DATA_BLOCK</span>
-            </div>
-
-            <div className="absolute bottom-3 right-4 text-[9px] font-bold text-white/10 uppercase tracking-[0.3em] pointer-events-none">
-                BLOCK_ID: {Math.random().toString(16).slice(2, 8).toUpperCase()}
-            </div>
-
-            <div className="flex flex-wrap select-none transition-all gap-y-3">
+            <div className="flex flex-wrap select-none transition-all gap-y-2">
                 {currentText.split(' ').map((word, wIndex) => {
+                    // Logic to maintain global index
                     const startIndex = currentText.split(' ').slice(0, wIndex).reduce((acc, w) => acc + w.length + 1, 0);
 
                     return (
                         <div key={wIndex} className="inline-block whitespace-nowrap">
+                            {/* Chars of the word */}
                             {word.split('').map((char, cIndex) => {
                                 const index = startIndex + cIndex;
                                 const isTyped = index < userInput.length;
@@ -61,22 +54,22 @@ export function TypingArea({ currentText, userInput, className }: TypingAreaProp
                                         key={index}
                                         ref={isActive ? activeCharRef : null}
                                         className={clsx(
-                                            "inline-block relative transition-all duration-75 min-w-[1ch] px-[1px]",
+                                            "inline-block relative transition-colors duration-100 min-w-[1ch] opacity-80",
                                             {
-                                                'text-white/15': !isTyped && !isActive,
-                                                'text-acid-green drop-shadow-[0_0_8px_rgba(157,252,3,0.3)] font-bold': isCorrect,
-                                                'text-white bg-rust-primary/80 font-black italic': isTyped && !isCorrect,
-                                                'text-white bg-rust-primary scale-110 font-black z-10 shadow-[2px_2px_0_0_#8c2f16]': isActive,
+                                                'text-gray-500': !isTyped && !isActive,
+                                                'text-white': isCorrect,
+                                                'text-turkish-red underline decoration-2 underline-offset-4': isTyped && !isCorrect,
+                                                'text-white bg-white/10 rounded-sm scale-110 font-bold z-10': isActive,
                                             }
                                         )}
                                     >
                                         {isActive && (
                                             <motion.div
                                                 layoutId="caret"
-                                                className="absolute -left-1 top-0 bottom-0 w-[4px] bg-white animate-flicker shadow-[0_0_15px_white]"
+                                                className="absolute -left-0.5 top-1 bottom-1 w-0.5 bg-turkish-red shadow-[0_0_8px_2px_rgba(227,10,23,0.5)]"
                                                 initial={{ opacity: 0 }}
-                                                animate={{ opacity: [1, 0.4, 1] }}
-                                                transition={{ duration: 0.4, repeat: Infinity }}
+                                                animate={{ opacity: 1 }}
+                                                transition={{ duration: 0.1 }}
                                             />
                                         )}
                                         {char}
@@ -84,6 +77,7 @@ export function TypingArea({ currentText, userInput, className }: TypingAreaProp
                                 );
                             })}
 
+                            {/* Space after word (except last) */}
                             {wIndex < currentText.split(' ').length - 1 && (() => {
                                 const index = startIndex + word.length;
                                 const isTyped = index < userInput.length;
@@ -95,22 +89,22 @@ export function TypingArea({ currentText, userInput, className }: TypingAreaProp
                                         key={index}
                                         ref={isActive ? activeCharRef : null}
                                         className={clsx(
-                                            "inline-block relative transition-all duration-75 min-w-[1ch]",
+                                            "inline-block relative transition-colors duration-100 min-w-[1ch] opacity-80",
                                             {
-                                                'text-white/15': !isTyped && !isActive,
-                                                'text-acid-green': isCorrect,
-                                                'text-white bg-rust-primary/80 italic': isTyped && !isCorrect,
-                                                'text-white bg-rust-primary scale-110 font-black z-10 shadow-[2px_2px_0_0_#8c2f16]': isActive,
+                                                'text-gray-500': !isTyped && !isActive,
+                                                'text-white': isCorrect,
+                                                'text-turkish-red underline decoration-2 underline-offset-4': isTyped && !isCorrect,
+                                                'text-white bg-white/10 rounded-sm scale-110 font-bold z-10': isActive,
                                             }
                                         )}
                                     >
                                         {isActive && (
                                             <motion.div
                                                 layoutId="caret"
-                                                className="absolute -left-1 top-0 bottom-0 w-[4px] bg-white animate-flicker shadow-[0_0_15px_white]"
+                                                className="absolute -left-0.5 top-1 bottom-1 w-0.5 bg-turkish-red shadow-[0_0_8px_2px_rgba(227,10,23,0.5)]"
                                                 initial={{ opacity: 0 }}
-                                                animate={{ opacity: [1, 0.4, 1] }}
-                                                transition={{ duration: 0.4, repeat: Infinity }}
+                                                animate={{ opacity: 1 }}
+                                                transition={{ duration: 0.1 }}
                                             />
                                         )}
                                         {'\u00A0'}
@@ -122,6 +116,5 @@ export function TypingArea({ currentText, userInput, className }: TypingAreaProp
                 })}
             </div>
         </div>
-
     );
 }
